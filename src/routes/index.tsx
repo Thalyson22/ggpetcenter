@@ -1,24 +1,50 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { SiteHeader } from "@/components/landing/site-header";
+import { HeroSection } from "@/components/landing/hero-section";
+import { ServicesSection } from "@/components/landing/services-section";
+import { HowItWorksSection } from "@/components/landing/how-it-works-section";
+import { GallerySection } from "@/components/landing/gallery-section";
+import { TestimonialsSection } from "@/components/landing/testimonials-section";
+import { ContactSection } from "@/components/landing/contact-section";
+import { SiteFooter } from "@/components/landing/site-footer";
+import { HERO_IMAGE } from "@/lib/petcenter-content";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+const TITLE = "G&G Pet Center — Banho, Tosa e Veterinário em Teresina";
+const DESCRIPTION =
+  "Estética animal completa, banhos relaxantes e atendimento veterinário humanizado em Teresina. Agende pelo WhatsApp.";
+
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: TITLE },
+      { name: "description", content: DESCRIPTION },
+      { property: "og:title", content: TITLE },
+      { property: "og:description", content: DESCRIPTION },
+      { property: "og:type", content: "website" },
+      { property: "og:locale", content: "pt_BR" },
+      { property: "og:image", content: HERO_IMAGE },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: TITLE },
+      { name: "twitter:description", content: DESCRIPTION },
+      { name: "twitter:image", content: HERO_IMAGE },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <>
+      <SiteHeader />
+      <main>
+        <HeroSection />
+        <ServicesSection />
+        <HowItWorksSection />
+        <GallerySection />
+        <TestimonialsSection />
+        <ContactSection />
+      </main>
+      <SiteFooter />
+    </>
   );
 }
