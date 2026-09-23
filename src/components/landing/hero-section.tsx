@@ -16,9 +16,9 @@ export function HeroSection() {
             Estética &amp; cuidado animal em Teresina
           </span>
 
-          <h1 className="mt-6 font-display text-5xl font-extrabold leading-[1.02] tracking-tight text-foreground sm:text-6xl lg:text-7xl">
+          <h1 className="mt-6 font-display text-5xl font-extrabold leading-[1.1] tracking-tight text-foreground sm:text-6xl lg:text-7xl">
             O cuidado mais{" "}
-            <span className="rounded-2xl bg-secondary px-3">especial</span> que seu melhor amigo
+            <span className="inline-block rounded-2xl bg-secondary px-3 leading-[1.05]">especial</span> que seu melhor amigo
             pode receber aqui
           </h1>
 

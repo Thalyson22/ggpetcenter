@@ -72,7 +72,7 @@ export function SiteFooter() {
 
       <p
         aria-hidden="true"
-        className="pointer-events-none mt-6 select-none whitespace-nowrap text-center font-display text-[14vw] font-extrabold leading-none text-ink-surface"
+        className="pointer-events-none mt-6 select-none whitespace-nowrap text-center font-display text-[11vw] font-extrabold leading-none text-ink-surface"
       >
         G&amp;G PET CENTER
       </p>
