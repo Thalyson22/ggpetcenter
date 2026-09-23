@@ -1,4 +1,4 @@
-import { Camera } from "lucide-react";
+import { Instagram } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
   ADDRESS,
@@ -38,7 +38,7 @@ export function SiteFooter() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-full border border-ink-border bg-ink-surface px-4 py-2 text-sm font-bold transition-colors hover:bg-ink-border"
               >
-                <Camera className="size-4" aria-hidden="true" />
+                <Instagram className="size-4" aria-hidden="true" />
                 {link.label}
               </a>
             ))}
