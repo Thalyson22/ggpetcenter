@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { Camera, Clock, HeartHandshake, Mail, MapPin, Phone, type LucideIcon } from "lucide-react";
+import { Clock, Instagram, HeartHandshake, Mail, MapPin, Phone, type LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
   ADDRESS,
@@ -66,7 +66,7 @@ export function ContactSection() {
             </a>
             <br />
             <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className={linkClass}>
-              <Camera className="size-4" aria-hidden="true" /> @ggpetcenter
+              <Instagram className="size-4" aria-hidden="true" /> @ggpetcenter
             </a>
           </InfoCard>
         </div>
