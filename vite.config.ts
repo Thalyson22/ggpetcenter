@@ -12,4 +12,12 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  vite: {
+    // Pre-bundle deps used by the landing page up front. Without this, Vite discovers
+    // them lazily, re-optimizes mid-session and the browser can end up mixing two React
+    // copies (different ?v= hashes) -> "Cannot read properties of null (reading 'useState')".
+    optimizeDeps: {
+      include: ["lucide-react", "clsx", "tailwind-merge"],
+    },
+  },
 });
