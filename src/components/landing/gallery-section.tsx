@@ -1,4 +1,4 @@
-import { Camera } from "lucide-react";
+import { Camera, Sparkles } from "lucide-react";
 import { GALLERY } from "@/lib/petcenter-content";
 import { cn } from "@/lib/utils";
 import { SectionHeading } from "./section-heading";
@@ -32,8 +32,19 @@ export function GallerySection() {
                 height={960}
                 className="aspect-[4/5] w-full rounded-[1.5rem] object-cover transition-transform duration-700 group-hover:scale-105 motion-reduce:transition-none"
               />
-              <figcaption className="absolute inset-x-3 bottom-3 rounded-2xl bg-card/90 px-3 py-2 text-center text-xs font-bold text-foreground backdrop-blur transition-all duration-300 sm:text-sm md:translate-y-2 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100">
-                {item.caption}
+              {/* Same as the original page: dark gradient overlay (no pill),
+                  outline sparkle icon + label. Always visible on touch screens,
+                  revealed on hover from md upwards. */}
+              <figcaption className="absolute inset-0 flex items-end rounded-[1.5rem] bg-gradient-to-t from-secondary-foreground/80 via-secondary-foreground/20 to-transparent p-4 transition-opacity duration-300 sm:p-6 md:opacity-0 md:group-hover:opacity-100">
+                <span className="flex items-center gap-2 font-display text-sm font-bold text-card sm:text-lg">
+                  <Sparkles
+                    aria-hidden="true"
+                    fill="none"
+                    strokeWidth={2}
+                    className="h-5 w-5 shrink-0 text-secondary drop-shadow-[0_0_6px_var(--color-secondary)] transition-transform duration-500 group-hover:rotate-12 group-hover:scale-110"
+                  />
+                  <span>{item.caption}</span>
+                </span>
               </figcaption>
             </figure>
           ))}
