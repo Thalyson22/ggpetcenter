@@ -1,10 +1,24 @@
+import { useCallback, useRef } from "react";
 import { Sparkles } from "lucide-react";
 import { STEPS } from "@/lib/petcenter-content";
+import { useScrollProgress } from "@/hooks/use-scroll-progress";
 import { SectionHeading } from "./section-heading";
 
+const WAVE_PATH = "M0 40 C 200 0, 400 0, 600 40 S 1000 80, 1200 40";
+
 export function HowItWorksSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const fillRef = useRef<SVGPathElement>(null);
+
+  // pathLength="1" normalises the path, so dashoffset 1 = empty, 0 = full.
+  const handleProgress = useCallback((progress: number) => {
+    fillRef.current?.style.setProperty("stroke-dashoffset", String(1 - progress));
+  }, []);
+
+  useScrollProgress(sectionRef, handleProgress);
+
   return (
-    <section id="como-funciona" className="bg-card px-4 py-24 md:px-8">
+    <section ref={sectionRef} id="como-funciona" className="bg-card px-4 py-24 md:px-8">
       <div className="mx-auto max-w-7xl">
         <SectionHeading
           eyebrow="Passo a passo"
@@ -14,19 +28,30 @@ export function HowItWorksSection() {
         />
 
         <div className="relative mt-20">
-          {/* Dashed wave connecting the steps (desktop only) */}
+          {/* Dashed wave connecting the steps, filled as the user scrolls (desktop only) */}
           <svg
             aria-hidden="true"
             viewBox="0 0 1200 80"
             preserveAspectRatio="none"
-            className="absolute inset-x-0 top-8 hidden h-20 w-full text-input md:block"
+            className="absolute inset-x-0 top-8 hidden h-20 w-full md:block"
           >
             <path
-              d="M0 40 C 200 0, 400 0, 600 40 S 1000 80, 1200 40"
+              d={WAVE_PATH}
               fill="none"
-              stroke="currentColor"
+              className="stroke-input"
               strokeWidth="8"
               strokeDasharray="18 14"
+            />
+            <path
+              ref={fillRef}
+              d={WAVE_PATH}
+              fill="none"
+              pathLength={1}
+              strokeDasharray="1 1"
+              strokeDashoffset="1"
+              strokeLinecap="round"
+              strokeWidth="8"
+              className="stroke-primary transition-[stroke-dashoffset] duration-200 ease-out motion-reduce:transition-none"
             />
           </svg>
 
