@@ -1,3 +1,3 @@
 # Roadmap
-- [ ] Galeria igual à referência (gato + buldogue francês, cards arredondados sem legenda, segundo card deslocado)
-- [ ] Adicionar 2 fotos: Atendimento Felino, Estética Canina
+- [x] Galeria igual à referência (gato + buldogue francês, cards arredondados, segundo card deslocado)
+- [x] Adicionar 2 fotos: Atendimento Felino, Estética Canina
