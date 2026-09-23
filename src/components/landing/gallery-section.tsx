@@ -1,5 +1,6 @@
 import { Camera } from "lucide-react";
 import { GALLERY } from "@/lib/petcenter-content";
+import { cn } from "@/lib/utils";
 import { SectionHeading } from "./section-heading";
 
 export function GallerySection() {
@@ -12,24 +13,26 @@ export function GallerySection() {
           description="Veja a alegria dos nossos clientes peludos após um dia de cuidados e carinho."
           icon={Camera}
         />
-        <div className="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:mx-auto lg:max-w-3xl">
+        {/* Reference layout: tall rounded photos with a thick light border,
+            every second card pushed down to create a staggered rhythm. */}
+        <div className="mx-auto mt-16 grid max-w-6xl grid-cols-2 gap-4 pb-10 sm:gap-6 lg:grid-cols-4 lg:gap-8">
           {GALLERY.map((item, i) => (
             <figure
               key={item.src}
-              className={
-                "group relative overflow-hidden rounded-3xl border-4 border-card shadow-xl shadow-primary/10 " +
-                (i % 2 === 1 ? "sm:mt-10" : "")
-              }
+              className={cn(
+                "group relative overflow-hidden rounded-[2rem] border-4 border-card bg-card shadow-xl shadow-primary/10 sm:border-8",
+                i % 2 === 1 && "translate-y-8 sm:translate-y-12",
+              )}
             >
               <img
                 src={item.src}
-                alt={item.caption}
+                alt={item.alt}
                 loading="lazy"
-                width={600}
-                height={600}
-                className="aspect-[4/5] w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                width={768}
+                height={960}
+                className="aspect-[4/5] w-full rounded-[1.5rem] object-cover transition-transform duration-700 group-hover:scale-105 motion-reduce:transition-none"
               />
-              <figcaption className="absolute inset-x-3 bottom-3 rounded-2xl bg-card/90 px-4 py-2 text-sm font-bold text-foreground backdrop-blur">
+              <figcaption className="absolute inset-x-3 bottom-3 rounded-2xl bg-card/90 px-3 py-2 text-center text-xs font-bold text-foreground backdrop-blur transition-all duration-300 sm:text-sm md:translate-y-2 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100">
                 {item.caption}
               </figcaption>
             </figure>

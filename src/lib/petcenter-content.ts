@@ -4,6 +4,9 @@
  * Centralised here so text/links can be edited in one place.
  */
 import type { LucideIcon } from "lucide-react";
+import galeriaGato from "@/assets/galeria-gato.jpg";
+import galeriaAtendimentoFelino from "@/assets/galeria-atendimento-felino.jpg";
+import galeriaEsteticaCanina from "@/assets/galeria-estetica-canina.jpg";
 import {
   Bath,
   CalendarCheck,
@@ -115,17 +118,32 @@ export const STEPS: readonly Step[] = [
 
 export interface GalleryItem {
   readonly src: string;
+  /** Short label shown over the photo on hover (always visible on touch). */
   readonly caption: string;
+  /** Accessible description of the photo content. */
+  readonly alt: string;
 }
 
 export const GALLERY: readonly GalleryItem[] = [
   {
-    src: "https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?auto=format&fit=crop&w=600&q=80",
-    caption: "Penteados & Laços",
+    src: galeriaGato,
+    caption: "Carinho Felino",
+    alt: "Gato preto e branco de olhos verdes apoiado em uma mesa de madeira, fundo verde",
   },
   {
-    src: "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=600&q=80",
-    caption: "Recreação Supervisionada",
+    src: "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=768&h=960&q=80",
+    caption: "Estilo & Conforto",
+    alt: "Buldogue francês vestindo camiseta amarela sobre fundo azul",
+  },
+  {
+    src: galeriaAtendimentoFelino,
+    caption: "Atendimento Felino",
+    alt: "Gato cinza e branco sendo examinado com estetoscópio por uma veterinária",
+  },
+  {
+    src: galeriaEsteticaCanina,
+    caption: "Estética Canina",
+    alt: "Cachorro branco com laço amarelo sendo escovado após a tosa",
   },
 ];
 
